@@ -20,7 +20,7 @@ export const customFetch = async (url: string, options: FetchOptions = {}) => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || "An error occurred");
+      return errorData;
     }
 
     return await response.json();

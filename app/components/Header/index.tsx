@@ -5,12 +5,13 @@ import Image from 'next/image';
 import avatar from '@/app/assets/icon/ic_avatar.svg'
 import { SearchIcon } from '../SearchIcon';
 import Input from '../Input';
-import { Button, Popover, PopoverContent, PopoverTrigger, useDisclosure } from '@nextui-org/react';
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 import HeaderBottom from './headerBottom';
 import LoginForm from '../Homepage/Login';
 import { useAuth } from '@/app/context/AuthContext';
 import { IProfile } from '@/app/type';
 import ic_logout from '@/app/assets/icon/ic_logout.svg'
+import { useRouter } from 'next/navigation';
 const ProfileUser = ({ user }: { user: IProfile }) => {
     const { logout } = useAuth();
     return (
@@ -39,14 +40,16 @@ const ProfileUser = ({ user }: { user: IProfile }) => {
     )
 }
 export default function Header() {
-    const { isOpen: isOpenLogin, onOpen: onOpenLogin, onOpenChange: onOpenChangeLogin } = useDisclosure();
-    const { user } = useAuth();
+    const { user, onOpenLogin } = useAuth();
+    const router = useRouter();
     return (
         <>
             <header className='sticky top-0 left-0 right-0 z-50 bg-black'>
                 <div className='border-b-2 border-solid border-gray-500'>
                     <div className='max-w-[1520px] mx-auto px-4 flex justify-between items-center py-[10px]'>
-                        <div className='relative w-[162px] h-[52px]'>
+                        <div onClick={() => {
+                            router.push('/')
+                        }} className='relative w-[162px] h-[52px] cursor-pointer'>
                             <Image src={logo} alt='logo' fill />
                         </div>
                         <div className='w-[60%]'>
@@ -62,7 +65,7 @@ export default function Header() {
                 </div>
                 <HeaderBottom />
             </header>
-            <LoginForm isOpen={isOpenLogin} onOpenChange={onOpenChangeLogin} />
+            <LoginForm />
         </>
 
     )

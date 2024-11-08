@@ -5,9 +5,9 @@ export interface IProfile {
   MEM_LID: string;
 }
 export interface IDepositProps {
-  amount: string;
+  amount: number;
   deposit_name: string;
   username: string;
   game_id: string;
-  brand_id: string;
+  comment?: string;
 }

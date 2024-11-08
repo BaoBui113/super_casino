@@ -2,7 +2,7 @@
 import React from "react";
 
 export default function Input({
-
+    value,
     title,
     underline = false,
     onChange,
@@ -15,7 +15,7 @@ export default function Input({
     errorMessage,
     startContext,
 }: {
-
+    value?: string;
     underline?: boolean;
     type?: 'text' | 'password' | 'number';
     title?: string;
@@ -44,14 +44,14 @@ export default function Input({
                     </div>
                 )}
                 <input
-
+                    value={value}
                     autoComplete="off"
                     disabled={disabled}
                     onChange={onChange}
                     id="input"
                     type={type}
                     placeholder={placeholder}
-                    className={`${!underline ? 'border border-solid border-[#64DAFE]' : 'border-b border-gray-500  transition duration-200 focus:border-gray-300'} rounded px-3 py-2 text-base w-full bg-transparent  focus:transparent focus:text-white focus:outline-none  ${classNameInput} ${startContext ? "pl-10" : ""}`}
+                    className={`${!underline ? 'border border-solid border-[#64DAFE]' : 'border-b border-gray-500  transition duration-200 focus:border-gray-300'} rounded px-3 py-2 text-base w-full bg-transparent  focus:transparent focus:outline-none  ${classNameInput} ${startContext ? "pl-10" : ""}`}
                 />
                 {endContext && (
                     <div className="absolute right-3 top-1/2 -translate-y-1/2">

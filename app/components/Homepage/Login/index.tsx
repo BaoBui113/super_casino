@@ -17,8 +17,8 @@ const schema = yup.object().shape({
     password: yup.string().required("Password is required"),
 });
 export type FormLoginType = yup.InferType<typeof schema>;
-export default function LoginForm({ isOpen, onOpenChange }: { isOpen: boolean, onOpenChange: () => void }) {
-    const { login } = useAuth();
+export default function LoginForm() {
+    const { login, isOpenLogin, onOpenChangeLogin } = useAuth();
     const [isVisible, setIsVisible] = React.useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
@@ -38,7 +38,7 @@ export default function LoginForm({ isOpen, onOpenChange }: { isOpen: boolean, o
                 })
                 login(authUser);
                 toast.success('Login Success');
-                onOpenChange();
+                onOpenChangeLogin();
             }
             else {
                 toast.error(res.message);
@@ -52,7 +52,7 @@ export default function LoginForm({ isOpen, onOpenChange }: { isOpen: boolean, o
     };
     return (
         <>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <Modal isOpen={isOpenLogin} onOpenChange={onOpenChangeLogin}>
                 <ModalContent className='rounded bg-black max-w-xs'>
                     {() => (
                         <>

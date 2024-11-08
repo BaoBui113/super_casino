@@ -35,55 +35,51 @@ export const listAmount = [
 ];
 export const listGames = [
   {
-    value: "",
-    label: "확장게임 선택",
-  },
-  {
-    value: "hogaming",
+    key: "hogaming",
     label: "HO 게임",
   },
   {
-    value: "dbcasino",
+    key: "dbcasino",
     label: "DB 카지노 게임",
   },
   {
-    value: "evolution",
+    key: "evolution",
     label: "에볼루션 게임",
   },
   {
-    value: "pragmatic",
+    key: "pragmatic",
     label: "프라그마틱 게임",
   },
   {
-    value: "pragmatic_slot",
+    key: "pragmatic_slot",
     label: "프라그마틱 슬롯 게임",
   },
   {
-    value: "sexygaming",
+    key: "sexygaming",
     label: "섹시 게임",
   },
   {
-    value: "microgaming",
+    key: "microgaming",
     label: "마이크로 게임",
   },
   {
-    value: "microgaming_slot",
+    key: "microgaming_slot",
     label: "마이크로 슬롯 게임",
   },
   {
-    value: "redtiger_slot",
+    key: "redtiger_slot",
     label: "레드타이거 슬롯 게임",
   },
   {
-    value: "sagaming",
+    key: "sagaming",
     label: "SA 게임",
   },
   {
-    value: "uniongaming",
+    key: "uniongaming",
     label: "유니온 게임",
   },
   {
-    value: "simpleplay",
+    key: "simpleplay",
     label: "심플플레이 게임",
   },
 ];

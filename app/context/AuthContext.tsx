@@ -2,6 +2,7 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode } from "react";
 
 import { IProfile } from "../type";
+import { useDisclosure } from "@nextui-org/react";
 
 
 
@@ -10,6 +11,13 @@ interface AuthContextType {
   user: IProfile | null;
   login: (token: string) => void;
   logout: () => void;
+  isOpenLogin: boolean;
+  onOpenLogin: () => void;
+  onOpenChangeLogin: () => void;
+  isOpenBank: boolean;
+  onOpenBank: () => void;
+  onOpenChangeBank: () => void;
+
 }
 
 // Create AuthContext
@@ -23,7 +31,8 @@ interface AuthProviderProps {
 // Create provider component
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IProfile | null>(null);
-
+  const { isOpen: isOpenLogin, onOpen: onOpenLogin, onOpenChange: onOpenChangeLogin } = useDisclosure();
+  const { isOpen: isOpenBank, onOpen: onOpenBank, onOpenChange: onOpenChangeBank } = useDisclosure();
   useEffect(() => {
     const auth = localStorage.getItem("authToken");
     if (auth) {
@@ -53,7 +62,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, isOpenLogin, onOpenChangeLogin, onOpenLogin, isOpenBank, onOpenBank, onOpenChangeBank }}>
       {children}
     </AuthContext.Provider>
   );

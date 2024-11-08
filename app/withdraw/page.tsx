@@ -1,9 +1,8 @@
 import React from 'react'
 import ButtonPayment from '../components/Payment/ButtonPayment'
-import NoticeDeposit from '../components/Payment/Deposit/NoticeDeposit'
 import PaymentForm from '../components/Payment/PaymentForm'
 
-export default function Deposit() {
+export default function Withdraw() {
     return (
         <div className='max-w-[1520px] mx-auto px-4'>
             <div className='flex flex-col mb-12'>
@@ -15,10 +14,7 @@ export default function Deposit() {
                     <span className='text-xl font-bold leading-6'>입금 계좌</span>
                     <ButtonPayment>고객센터 문의</ButtonPayment>
                 </div>
-                <PaymentForm status='deposit' />
-            </div>
-            <div className='mt-12 mb-20'>
-                <NoticeDeposit />
+                <PaymentForm status='withdraw' />
             </div>
         </div>
     )
