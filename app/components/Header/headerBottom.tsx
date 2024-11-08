@@ -48,7 +48,7 @@ export default function HeaderBottom() {
                 {
                     list_navigates.map((nav, index) => {
                         return (
-                            <p onClick={() => handleNavigate(nav)} key={index} className='w-[120px] h-[60px] flex justify-center items-center cursor-pointer'>{nav.title}</p>
+                            <p onClick={() => handleNavigate(nav)} key={index} className='hover:text-[#64DAFE] duration-500 w-[120px] h-[60px] flex justify-center items-center cursor-pointer'>{nav.title}</p>
                         )
                     })
                 }
