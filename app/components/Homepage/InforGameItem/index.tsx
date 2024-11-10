@@ -27,9 +27,12 @@ export default function InformationGameItem({
   tags: string[];
   value: string;
 }) {
-  const { user } = useAuth();
+  const { user, onOpenLogin } = useAuth();
   const handlePlayGame = async () => {
-    if (!user) return;
+    if (!user) {
+      onOpenLogin();
+      return;
+    }
     await handleGameRun({
       username: user.MEM_LID,
       game_id: value,
