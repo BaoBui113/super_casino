@@ -11,3 +11,9 @@ export interface IDepositProps {
   game_id: string;
   comment?: string;
 }
+
+export interface GameRunProps {
+  username: string;
+  game_id: string;
+  mobile: string;
+}
