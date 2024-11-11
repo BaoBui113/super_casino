@@ -23,12 +23,13 @@ const list_games = [
     value: "evolution",
     tags: ["JACKPOT", "SLOT", "BACARA"],
   },
+
 ];
 export default function ListGame() {
   return (
-    <div className="relative w-full aspect-[1.8991]">
+    <div className="relative w-full min-h-[200px]">
       <Image src={bg_game} alt="bg_game" fill className="object-cover" />
-      <ContainerBackground classNames="top-[75px]">
+      <ContainerBackground classNames=" py-[40px] relative">
         <div className="grid grid-cols-12 gap-12">
           {list_games.map((game, index) => {
             return (
@@ -38,28 +39,13 @@ export default function ListGame() {
                   img={game.img}
                   title={game.title}
                   tags={game.tags}
+                  id={game.id}
                 />
               </div>
             );
           })}
         </div>
       </ContainerBackground>
-      {/* <ContainerBackground classNames="bottom-0">
-        <div className="grid grid-cols-12 gap-12">
-          <div className="xl:col-span-3 col-span-12">
-            <BetGame />
-          </div>
-          <div className="xl:col-span-3 col-span-12">
-            <BetGame />
-          </div>
-          <div className="xl:col-span-3 col-span-12">
-            <BetGame />
-          </div>
-          <div className="xl:col-span-3 col-span-12">
-            <BetGame />
-          </div>
-        </div>
-      </ContainerBackground> */}
     </div>
   );
 }

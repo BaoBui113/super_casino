@@ -3,7 +3,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { handleGameRun } from "@/app/api/game";
 import { useAuth } from "@/app/context/AuthContext";
-import { a } from "framer-motion/client";
+
 const openPopup = (popupUrl: string) => {
   const width = 1440;
   const height = 810;
@@ -21,13 +21,15 @@ export default function InformationGameItem({
   title,
   tags,
   value,
+  id,
 }: {
   img: StaticImageData;
   title: string;
   tags: string[];
   value: string;
+  id: number;
 }) {
-  const { user, onOpenLogin } = useAuth();
+  const { user, onOpenLogin, setSelectGameRun, selectGameRun } = useAuth();
   const handlePlayGame = async () => {
     if (!user) {
       onOpenLogin();
@@ -46,13 +48,19 @@ export default function InformationGameItem({
       }
     });
   };
+  const handleSelectGame = () => {
+    if (title === "Casino Game") setSelectGameRun(1);
+    else setSelectGameRun(2);
+
+  };
   return (
     <div
       style={{
         background:
           "radial-gradient(100% 93.26% at 100% 0%, #0395F5 0%, #01B7F7 100%)",
       }}
-      className="flex justify-between"
+      onClick={handleSelectGame}
+      className={`flex justify-between cursor-pointer ${selectGameRun === id ? "opacity-100" : "opacity-40"}`}
     >
       <div className="flex-1 flex flex-col gap-2 pt-11 pl-8">
         <div className="flex gap-1">
@@ -71,7 +79,7 @@ export default function InformationGameItem({
           {title}
         </p>
         <p
-          onClick={handlePlayGame}
+          // onClick={handlePlayGame}
           className="text-white text-[28px] font-semibold leading-8 cursor-pointer"
         >
           Start Now

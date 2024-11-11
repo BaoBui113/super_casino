@@ -17,6 +17,8 @@ interface AuthContextType {
   isOpenBank: boolean;
   onOpenBank: () => void;
   onOpenChangeBank: () => void;
+  selectGameRun: number;
+  setSelectGameRun: (value: number) => void;
 
 }
 
@@ -33,6 +35,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IProfile | null>(null);
   const { isOpen: isOpenLogin, onOpen: onOpenLogin, onOpenChange: onOpenChangeLogin } = useDisclosure();
   const { isOpen: isOpenBank, onOpen: onOpenBank, onOpenChange: onOpenChangeBank } = useDisclosure();
+  const [selectGameRun, setSelectGameRun] = useState(1)
   useEffect(() => {
     const auth = localStorage.getItem("authToken");
     if (auth) {
@@ -62,7 +65,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isOpenLogin, onOpenChangeLogin, onOpenLogin, isOpenBank, onOpenBank, onOpenChangeBank }}>
+    <AuthContext.Provider value={{ user, login, logout, isOpenLogin, onOpenChangeLogin, onOpenLogin, isOpenBank, onOpenBank, onOpenChangeBank, selectGameRun, setSelectGameRun }}>
       {children}
     </AuthContext.Provider>
   );

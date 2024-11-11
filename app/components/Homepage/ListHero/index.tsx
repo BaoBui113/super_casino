@@ -5,11 +5,11 @@ import Image from 'next/image'
 import ContainerBackground from '../ContainerBackground'
 export default function ListHero() {
     return (
-        <div className='relative w-full min-h-[1200px]'>
-            <div className='absolute inset-0 z-0 h-full'>
-                <Image src={bg_hero} alt='bg_game' layout='fill' className='object-cover' />
-            </div>
-            <ContainerBackground classNames='top-[75px] relative z-10 flex flex-col'>
+        <div className='relative w-full min-h-[300px]'>
+
+            <Image src={bg_hero} alt='bg_game' fill className='object-cover' />
+
+            <ContainerBackground classNames='py-[80px] relative'>
                 <div className='grid grid-cols-12 gap-x-5 gap-y-12'>
                     {Array(20).fill(0).map((_, index) => {
                         return (
